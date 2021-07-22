@@ -1,0 +1,21 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <div
+        style="display: flex;flex-direction: row;width: 100vw;height: 100vh;justify-content: center;align-items: center;">
+        <div
+            style="display: flex;flex-direction: column;width: 90vw;height: 90vh;justify-content: center;align-items: center;">
+            <h1>Ticket is about to be CANCELED!!!</h1>
+            <h1>Refund Amount : ₹{{price}}/-</h1>
+            <h2>Deducted Amount (Cancellation Charge) : ₹{{deduction}}/-</h2>
+            <a href='{% url "deleteTicket" pnr=pnr %}'>Confirm</a>&ensp;
+            <a href='{% url "index" %}'>Cancel</a>&ensp;
+        </div>
+    </div>
+</body>
+
+</html>

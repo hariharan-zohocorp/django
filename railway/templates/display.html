@@ -1,0 +1,74 @@
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div
+        style="justify-content: center; align-items: center; display: flex;flex-direction: column;width: max-widht;height: max-height;">
+        <div
+            style=" display: flex; flex-direction: column;justify-content: center;align-items: center;width: fit-content;height: fit-content;">
+            <h1>Booked Successfully!!!</h1>
+            <table class="table" style="border: 1px solid black;width: 1000px;font-size: large;">
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid black;width: fit-content;" scope="col">Train Name</th>
+                        <th style="border: 1px solid black;width: fit-content;" scope="col">Train Number</th>
+                        <th style="border: 1px solid black;width: fit-content;" scope="col">Ticket Number</th>
+                        <th style="border: 1px solid black;width: fit-content;" scope="col">PNR</th>
+                        <th style="border: 1px solid black;width: fit-content;" scope="col">From</th>
+                        <th style="border: 1px solid black;width: fit-content;" scope="col">To</th>
+                        <th style="border: 1px solid black;width: fit-content;" scope="col">Date</th>
+                        <th style="border: 1px solid black;width: fit-content;" scope="col">Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row" style="border: 1px solid black;width: fit-content;"> {{obj.train_name}}</td>
+                        <td scope="row" style="border: 1px solid black;width: fit-content;"> {{obj.train_number}}</td>
+                        <td scope="row" style="border: 1px solid black;width: fit-content;"> {{obj.ticket_no}}</td>
+                        <td scope="row" style="border: 1px solid black;width: fit-content;"> {{obj.pnr}}</td>
+                        <td scope="row" style="border: 1px solid black;width: fit-content;"> {{obj.from}}</td>
+                        <td scope="row" style="border: 1px solid black;width: fit-content;"> {{obj.destination}}</td>
+                        <td scope="row" style="border: 1px solid black;width: fit-content;"> {{obj.date}}</td>
+                        <td scope="row" style="border: 1px solid black;width: fit-content;"> {{obj.time}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2>Total Ticket Cost : ₹{{rate}}/-</h2>
+        <div
+            style="display: flex; flex-direction: column;justify-content: center;align-items: center;width: fit-content;height: fit-content;">
+            <h1>Passengers List For The Ticket</h1>
+            <table class="table" style="border: 1px solid black;width: 1000px;font-size: large;">
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid black;width: fit-content;" scope="col">Name</th>
+                        <th style="border: 1px solid black;width: fit-content;" scope="col">Aadhar No</th>
+                        <th style="border: 1px solid black;width: fit-content;" scope="col">Age</th>
+                        <th style="border: 1px solid black;width: fit-content;" scope="col">Gender</th>
+                        <th style="border: 1px solid black;width: fit-content;" scope="col">Food</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for id,name,aadhar_no,age,gender,food,pnr_number in inst %}
+                    <tr>
+                        <td scope="row" style="border: 1px solid black;width: fit-content;"> {{name}}</td>
+                        <td scope="row" style="border: 1px solid black;width: fit-content;"> {{aadhar_no}}</td>
+                        <td scope="row" style="border: 1px solid black;width: fit-content;"> {{age}}</td>
+                        <td scope="row" style="border: 1px solid black;width: fit-content;"> {{gender}}</td>
+                        <td scope="row" style="border: 1px solid black;width: fit-content;"> {{food}}</td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+            <h3>Note Down The PNR and Ticket Number For Tracking</h3>
+        </div>
+    </div>
+</body>
+
+</html>

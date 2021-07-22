@@ -1,0 +1,83 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <div
+        style="display: flex;flex-direction: row;width: 100vw;height: 100vh;justify-content: center;align-items: center;">
+        <div
+            style="display: flex;flex-direction: column;width: 90vw;height: 90vh;justify-content: center;align-items: center;">
+            <!-- TOP TABLE FOR BASIC DETAILS -->
+            <div
+                style=" display: flex; flex-direction: column;justify-content: center;align-items: center;width: fit-content;height: fit-content;">
+                {% for id,ticket_no,train_name,train_no,pnr,date,time,class,from,to,baseRate,ticketCost in ticket%}
+                <h1>Train Name : {{train_name}}</h1>
+                <h1>Train No : {{train_no}}</h1>
+                <h2>Ticket Cost : ₹{{ticketCost}}/-</h2>
+                <table class="table" style="border: 1px solid black;width: 1000px;font-size: large;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid black;width: fit-content;" scope="col">PNR</th>
+                            <th style="border: 1px solid black;width: fit-content;" scope="col">From</th>
+                            <th style="border: 1px solid black;width: fit-content;" scope="col">To</th>
+                            <th style="border: 1px solid black;width: fit-content;" scope="col">Date</th>
+                            <th style="border: 1px solid black;width: fit-content;" scope="col">Time</th>
+                            <th style="border: 1px solid black;width: fit-content;" scope="col">Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row" style="border: 1px solid black;width: fit-content;"> {{pnr}}</td>
+                            <td scope="row" style="border: 1px solid black;width: fit-content;"> {{from}}</td>
+                            <td scope="row" style="border: 1px solid black;width: fit-content;"> {{to}}</td>
+                            <td scope="row" style="border: 1px solid black;width: fit-content;"> {{date}}</td>
+                            <td scope="row" style="border: 1px solid black;width: fit-content;"> {{time}}</td>
+                            <td scope="row" style="border: 1px solid black;width: fit-content;">
+                                <a href='{% url "delete" pnr=pnr %}'>Cancel</a>&ensp;
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- FOR NO OF PASSENGERS PER TICKET -->
+            <div
+                style="display: flex; flex-direction: column;justify-content: center;align-items: center;width: fit-content;height: fit-content;">
+                <h1>Passengers List For The Ticket : {{ticket_no}}</h1>
+                {% endfor %}
+                <table class="table" style="border: 1px solid black;width: 1000px;font-size: large;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid black;width: fit-content;" scope="col">Name</th>
+                            <th style="border: 1px solid black;width: fit-content;" scope="col">Aadhar No</th>
+                            <th style="border: 1px solid black;width: fit-content;" scope="col">Age</th>
+                            <th style="border: 1px solid black;width: fit-content;" scope="col">Gender</th>
+                            <th style="border: 1px solid black;width: fit-content;" scope="col">Food</th>
+                            <th style="border: 1px solid black;width: fit-content;" scope="col">Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for id,name,aadhar,age,gender,food,pnr in members %}
+                        <tr>
+                            <td scope="row" style="border: 1px solid black;width: fit-content;"> {{name}}</td>
+                            <td scope="row" style="border: 1px solid black;width: fit-content;"> {{aadhar}}</td>
+                            <td scope="row" style="border: 1px solid black;width: fit-content;"> {{age}}</td>
+                            <td scope="row" style="border: 1px solid black;width: fit-content;"> {{gender}}</td>
+                            <td scope="row" style="border: 1px solid black;width: fit-content;"> {{food}}</td>
+                            <td scope="row" style="border: 1px solid black;width: fit-content;">
+                                <a href='{% url "deleteAfter" id=id %}'>Delete</a>&ensp;
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
